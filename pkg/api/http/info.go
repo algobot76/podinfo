@@ -1,6 +1,7 @@
 package http
 
 import (
+	"log"
 	"net/http"
 
 	"runtime"
@@ -33,7 +34,10 @@ func (s *Server) infoHandler(w http.ResponseWriter, r *http.Request) {
 		Runtime:      runtime.Version(),
 		NumGoroutine: strconv.FormatInt(int64(runtime.NumGoroutine()), 10),
 		NumCPU:       strconv.FormatInt(int64(runtime.NumCPU()), 10),
+		NumGC:        "foo",
 	}
+
+	log.Printf("hello")
 
 	s.JSONResponse(w, r, data)
 }
@@ -50,4 +54,5 @@ type RuntimeResponse struct {
 	Runtime      string `json:"runtime"`
 	NumGoroutine string `json:"num_goroutine"`
 	NumCPU       string `json:"num_cpu"`
+	NumGC        string `json:"num_gc"`
 }

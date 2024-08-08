@@ -1,0 +1,18 @@
+{
+    "target": {
+      "namespace": "playground",
+      "path": {
+        "deployment": "podinfo"
+      }
+    },
+    "feature": {
+      "network": {
+        "incoming": {
+            "mode": "steal"
+        },
+        "outgoing": true
+      },
+      "fs": "read",
+      "env": true
+    }
+  }
